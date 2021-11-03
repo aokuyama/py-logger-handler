@@ -6,3 +6,5 @@ services:
     tty: true
     volumes:
         - ./logger_handler:/app
+    environment:
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
