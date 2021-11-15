@@ -3,6 +3,8 @@ from slack_handler import SlackHandler
 
 def get_logger(name=None, level=INFO):
     logger = get_default_logger(name)
+    if logger.hasHandlers():
+        return logger
     handler = get_stream_handler(level)
     logger.addHandler(handler)
     logger.propagate = False
