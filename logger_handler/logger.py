@@ -1,5 +1,7 @@
 from logging import getLogger, StreamHandler, DEBUG, INFO, CRITICAL
 from slack_handler import SlackHandler
+from logging import Formatter
+
 
 def get_logger(name=None, level=INFO):
     logger = get_default_logger(name)
@@ -10,23 +12,28 @@ def get_logger(name=None, level=INFO):
     logger.propagate = False
     return logger
 
+
 def get_default_logger(name):
     logger = getLogger(name)
     logger.setLevel(DEBUG)
     return logger
+
 
 def get_stream_handler(level=INFO):
     handler = StreamHandler()
     handler.setLevel(level)
     return handler
 
+
 def get_test_logger():
     return get_logger('test', CRITICAL)
 
+
 def get_slack_handler(url, level=INFO):
-    handler = SlackHandler(url)
+    handler = SlackHandler("hooks.slack.com", url, "POST", secure=True)
     handler.setLevel(level)
-    return handler 
+    return handler
+
 
 if __name__ == '__main__':
     logger = get_logger(level=DEBUG)

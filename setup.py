@@ -2,7 +2,7 @@ import setuptools
  
 setuptools.setup(
     name="logger_handler",
-    version="0.0.2",
+    version="0.0.3",
     author="aokuyama",
     author_email="mail@aokuyama.work",
     description="logger handler",
